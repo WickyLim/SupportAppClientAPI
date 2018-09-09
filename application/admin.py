@@ -17,7 +17,7 @@ class ClientUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'is_manager', 'client_company_id' 'password1', 'password2'),
+            'fields': ('email', 'is_manager', 'client_company_id', 'password1', 'password2'),
         }),
     )
     list_display = ('email', 'client_company_id', 'is_manager', 'is_staff')
