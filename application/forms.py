@@ -6,7 +6,7 @@ class ClientUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = ClientUser
-        fields = ('email', 'is_manager', 'client_id')
+        fields = ('email', 'is_manager', 'client_company_id')
 
 class ClientUserChangeForm(UserChangeForm):
 
