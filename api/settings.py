@@ -60,9 +60,13 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =1
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+#commented for dev testing
+#ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day
+ACCOUNT_FORMS = {
+    'signup': "application.forms.ClientUserCreationForm",
+}
 ACCOUNT_SIGNUP_FORM_CLASS = "application.forms.ClientUserCreationForm"
 AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -71,6 +75,15 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     "allauth.account.auth_backends.AuthenticationBackend",
 )
+
+#django-rest-auth settings
+REST_AUTH_SERIALIZERS = {
+    'PASSWORD_RESET_SERIALIZER': 'application.serializers.PasswordSerializer',
+}
+REST_AUTH_REGISTER_SERIALIZERS = { 
+    'REGISTER_SERIALIZER': 'application.serializers.ClientUserRegisterSerializer'
+}
+ACCOUNT_ADAPTER = 'application.adapters.ClientUserAccountAdapter'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
